@@ -1,0 +1,6 @@
+laya==0.3.23
+transformers==5.18.0
+huggingface_hub==1.33.0
+fastapi==0.142.2
+uvicorn==0.54.0
+pydantic==2.13.5

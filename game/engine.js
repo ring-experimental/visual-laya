@@ -7,6 +7,13 @@ const $ = (s) => document.querySelector(s);
 const $$ = (s) => [...document.querySelectorAll(s)];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// 판정 API 위치: ?api=<url>로 지정 > GitHub Pages면 REMOTE_API > 그 외에는 같은 서버(server/app.py)
+// REMOTE_API가 비어 있으면 GitHub Pages에서는 브라우저 간이 판정(localJudge)으로 진행한다
+const REMOTE_API = "";
+const API_BASE = new URLSearchParams(location.search).get("api")
+  ?? (location.hostname.endsWith("github.io") ? REMOTE_API : "");
+const api = (path) => (API_BASE ? new URL(path, API_BASE).href : path);
+
 const CHARS = {
   yuri: { name: "한유리", short: "유리", color: "var(--c-yuri)", init: 30 },
   dohyun: { name: "서도현", short: "도현", color: "var(--c-dohyun)", init: 30 },
@@ -473,8 +480,8 @@ function decideEnding() {
 async function judge(ev, text) {
   try {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 8000);
-    const r = await fetch("api/judge", {
+    const t = setTimeout(() => ctrl.abort(), API_BASE ? 20000 : 8000); // 원격(CPU) 서버는 판정이 수 초 걸린다
+    const r = await fetch(api("api/judge"), {
       method: "POST", headers: { "content-type": "application/json" },
       body: JSON.stringify({ event_id: ev.id, text }), signal: ctrl.signal,
     });
@@ -910,12 +917,23 @@ async function boot() {
   }
   $('[data-title="continue"]').disabled = !safeGet("coa_auto", null);
   try { MANIFEST = new Set(await (await fetch("data/assets.json", { cache: "no-store" })).json()); } catch { MANIFEST = null; }
-  try {
-    const h = await (await fetch("api/health")).json();
-    $("#server-status").textContent = h.model ? `판정 엔진: Laya · ${h.model}` : "판정 엔진: 휴리스틱";
-  } catch {
-    $("#server-status").textContent = "판정 서버 없음 — 오프라인 간이 판정으로 진행합니다";
-  }
   if (DEBUG) $("#hearts").classList.remove("hidden");
+  checkServer(API_BASE ? 12 : 1);
+}
+// 원격 Space는 잠들어 있으면 깨어나는 데 1분 정도 걸리므로 몇 번 다시 확인한다
+async function checkServer(tries) {
+  for (let i = 1; i <= tries; i++) {
+    try {
+      const h = await (await fetch(api("api/health"), { cache: "no-store" })).json();
+      $("#server-status").textContent = h.model ? `판정 엔진: Laya · ${h.model}` : "판정 엔진: 휴리스틱";
+      return;
+    } catch {
+      if (i < tries) {
+        $("#server-status").textContent = `판정 서버 깨우는 중… (${i}/${tries})`;
+        await sleep(10000);
+      }
+    }
+  }
+  $("#server-status").textContent = "판정 서버 없음 — 오프라인 간이 판정으로 진행합니다";
 }
 boot();
