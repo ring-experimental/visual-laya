@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Laya Sans"; src: local("Noto Sans CJK KR Bold"), local("NotoSansCJKkr-Bold"), local("Malgun Gothic Bold"), local("Malgun Gothic"); font-weight: 700 900; }
+      @font-face { font-family: "Laya Sans"; src: local("Noto Sans CJK KR"), local("NotoSansCJKkr-Regular"), local("Malgun Gothic"); font-weight: 100 600; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0d0f14; }
+      #root {
+        position: relative; width: 100%; height: 100%;
+        font-family: "Laya Sans", sans-serif;
+        color: #eef0f4;
+      }
+      .scene { position: absolute; inset: 0; padding: 110px 160px; }
+      .kicker { font-size: 30px; color: #f5b041; letter-spacing: 0.04em; font-weight: 700; margin-bottom: 18px; }
+      .h1 { font-size: 104px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; }
+      .h2 { font-size: 64px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+      .sub { font-size: 34px; color: #a3a9b6; line-height: 1.5; }
+      .foot { position: absolute; left: 160px; bottom: 70px; font-size: 24px; color: #6c7383; }
+
+      /* title */
+      #s1 { display: flex; flex-direction: column; justify-content: center; }
+      .chips { display: flex; gap: 18px; margin-top: 54px; }
+      .chip { font-size: 30px; padding: 14px 28px; border-radius: 999px; border: 2px solid #343a48; color: #cfd3dc; }
+      .chip.hl { border-color: #f5b041; color: #f5b041; }
+
+      /* conditions */
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 60px; }
+      .card { background: #161a23; border: 2px solid #252b38; border-radius: 22px; padding: 44px 40px; min-height: 380px; }
+      .card .n { font-size: 26px; color: #f5b041; font-weight: 700; margin-bottom: 18px; }
+      .card .t { font-size: 44px; font-weight: 800; margin-bottom: 22px; }
+      .card .d { font-size: 28px; color: #a3a9b6; line-height: 1.55; }
+
+      /* bar charts */
+      .chart { margin-top: 56px; display: flex; flex-direction: column; gap: 30px; }
+      .row { display: grid; grid-template-columns: 420px 1fr 200px; align-items: center; gap: 30px; }
+      .lbl { font-size: 34px; font-weight: 700; color: #cfd3dc; }
+      .lbl small { display: block; font-size: 22px; font-weight: 400; color: #7b8293; margin-top: 4px; }
+      .track { height: 62px; background: #161a23; border-radius: 12px; overflow: hidden; }
+      .bar { height: 100%; width: 0; background: #4a5266; border-radius: 12px; }
+      .val { font-size: 46px; font-weight: 800; text-align: right; color: #cfd3dc; font-variant-numeric: tabular-nums; }
+      .row.win .lbl, .row.win .val { color: #f5b041; }
+      .row.win .bar { background: linear-gradient(90deg, #d68910, #f5b041); }
+      .row.bad .bar { background: #b0413e; }
+      .row.bad .val { color: #e5736f; }
+      .note { position: absolute; left: 160px; right: 160px; bottom: 90px; font-size: 32px; color: #cfd3dc;
+              background: #161a23; border-left: 8px solid #f5b041; padding: 26px 36px; border-radius: 10px; }
+
+      /* matrix */
+      table { width: 100%; border-collapse: collapse; margin-top: 50px; font-size: 32px; }
+      th { text-align: left; color: #6c7383; font-weight: 700; font-size: 26px; padding: 0 22px 20px; border-bottom: 2px solid #252b38; }
+      td { padding: 26px 22px; border-bottom: 1px solid #1f2430; color: #cfd3dc; }
+      td.m { font-weight: 800; }
+      tr.win td { background: rgba(245, 176, 65, 0.10); color: #f5b041; }
+      .g { color: #58d68d; } .r { color: #e5736f; }
+
+      /* decision */
+      #s7 { display: flex; flex-direction: column; justify-content: center; }
+      .flow { display: flex; align-items: center; gap: 30px; margin-top: 60px; }
+      .step { background: #161a23; border: 2px solid #252b38; border-radius: 20px; padding: 34px 40px; font-size: 34px; font-weight: 700; }
+      .step small { display: block; font-size: 24px; color: #8a91a0; font-weight: 400; margin-top: 8px; }
+      .step.hold { border-color: #e5736f; color: #e5736f; }
+      .arrow { font-size: 50px; color: #6c7383; }
+
+      /* listen */
+      .listen .kicker { display: flex; gap: 28px; align-items: baseline; }
+      .lmeta { color: #8a91a0; font-weight: 400; }
+      .quote { font-size: 62px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; margin: 10px 0 64px; }
+      .lrows { display: flex; flex-direction: column; gap: 30px; }
+      .lrow { display: grid; grid-template-columns: 460px 1fr 120px; align-items: center; gap: 30px; opacity: 0.45; }
+      .ltrack { height: 20px; background: #161a23; border-radius: 10px; overflow: hidden; }
+      .lfill { height: 100%; width: 0; background: #8a91a0; border-radius: 10px; }
+      .ldur { font-size: 30px; color: #6c7383; text-align: right; font-variant-numeric: tabular-nums; }
+      .lrow.win .lbl { color: #f5b041; }
+      .lrow.win .lfill { background: linear-gradient(90deg, #d68910, #f5b041); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="119.62" data-width="1920" data-height="1080">
+
+      <!-- S1 title -->
+      <section id="s1" class="scene clip" data-start="0.0" data-duration="6.2" data-track-index="0">
+        <div class="kicker s1a">VISUAL-LAYA · VOICE REPORT</div>
+        <div class="h1 s1b">로컬 TTS 5종<br />감정 연기 비교</div>
+        <div class="chips s1c">
+          <span class="chip">Qwen3 Base</span><span class="chip">Fish S2 Pro</span>
+          <span class="chip hl">Higgs TTS 3</span><span class="chip">Qwen3 VoiceDesign</span><span class="chip">ZONOS2</span>
+        </div>
+        <div class="foot">출처: docs/VOICE_REPORT.md · 2026-10-03</div>
+      </section>
+
+      <!-- S2 conditions -->
+      <section id="s2" class="scene clip" data-start="6.2" data-duration="9.86" data-track-index="0">
+        <div class="kicker">비교 조건</div>
+        <div class="h2">같은 대사, 같은 레퍼런스, 세 가지 지표</div>
+        <div class="cards">
+          <div class="card c1"><div class="n">대사</div><div class="t">12줄</div>
+            <div class="d">칼 장면, 울음, 고함, 고백, 위협 등 감정 폭이 큰 줄. 레퍼런스는 1차 게임 목소리 약 10초.</div></div>
+          <div class="card c2"><div class="n">테이크</div><div class="t">1~2회</div>
+            <div class="d">Fish · Higgs · ZONOS2는 2테이크(24개), Qwen 계열은 1테이크(12개).</div></div>
+          <div class="card c3"><div class="n">지표</div><div class="t">CER · SIM · 감정</div>
+            <div class="d">Whisper 문자 오류율, WavLM 화자 유사도, emotion2vec+ 감정 일치율.</div></div>
+        </div>
+      </section>
+
+      <!-- S3 emotion -->
+      <section id="s3" class="scene clip" data-start="16.06" data-duration="10.47" data-track-index="0">
+        <div class="kicker">지표 1 · 감정 일치</div>
+        <div class="h2">의도한 감정이 들리는가</div>
+        <div class="chart">
+          <div class="row"><div class="lbl">A. Qwen3 Base 클론<small>1차 · 2/12</small></div><div class="track"><div class="bar e1"></div></div><div class="val"><span class="ev1">0</span>%</div></div>
+          <div class="row"><div class="lbl">B. Fish S2 Pro<small>5/24</small></div><div class="track"><div class="bar e2"></div></div><div class="val"><span class="ev2">0</span>%</div></div>
+          <div class="row win"><div class="lbl">C. Higgs TTS 3<small>15/24</small></div><div class="track"><div class="bar e3"></div></div><div class="val"><span class="ev3">0</span>%</div></div>
+          <div class="row"><div class="lbl">D. Qwen3 VoiceDesign<small>줄별 · 4/12</small></div><div class="track"><div class="bar e4"></div></div><div class="val"><span class="ev4">0</span>%</div></div>
+          <div class="row"><div class="lbl">E. ZONOS2 (Q8_0)<small>8/24</small></div><div class="track"><div class="bar e5"></div></div><div class="val"><span class="ev5">0</span>%</div></div>
+        </div>
+        <div class="note n3">Higgs만 과반. 고함 대사는 Whisper가 느낌표를 붙일 정도였다.</div>
+      </section>
+
+      <!-- S4 pronunciation -->
+      <section id="s4" class="scene clip" data-start="26.53" data-duration="9" data-track-index="0">
+        <div class="kicker">지표 2 · 발음</div>
+        <div class="h2">CER 10% 이하 비율</div>
+        <div class="chart">
+          <div class="row"><div class="lbl">A. Qwen3 Base 클론<small>12/12 · 중앙값 0%</small></div><div class="track"><div class="bar p1"></div></div><div class="val"><span class="pv1">0</span>%</div></div>
+          <div class="row"><div class="lbl">B. Fish S2 Pro<small>24/24 · 중앙값 0%</small></div><div class="track"><div class="bar p2"></div></div><div class="val"><span class="pv2">0</span>%</div></div>
+          <div class="row win"><div class="lbl">C. Higgs TTS 3<small>23/24 · 중앙값 0%</small></div><div class="track"><div class="bar p3"></div></div><div class="val"><span class="pv3">0</span>%</div></div>
+          <div class="row"><div class="lbl">D. Qwen3 VoiceDesign<small>12/12 · 중앙값 0%</small></div><div class="track"><div class="bar p4"></div></div><div class="val"><span class="pv4">0</span>%</div></div>
+          <div class="row bad"><div class="lbl">E. ZONOS2 (Q8_0)<small>2/24 · 중앙값 72%</small></div><div class="track"><div class="bar p5"></div></div><div class="val"><span class="pv5">0</span>%</div></div>
+        </div>
+        <div class="note n4">ZONOS2: "강해온은 너무 쉽게 죽었어" → "가메오는 너무 쉽게 죽었어…"</div>
+      </section>
+
+      <!-- S5 SIM -->
+      <section id="s5" class="scene clip" data-start="35.53" data-duration="10.03" data-track-index="0">
+        <div class="kicker">지표 3 · 톤 유지</div>
+        <div class="h2">레퍼런스 대비 화자 유사도 (SIM)</div>
+        <div class="chart">
+          <div class="row"><div class="lbl">A. Qwen3 Base 클론</div><div class="track"><div class="bar t1"></div></div><div class="val tv">0.935</div></div>
+          <div class="row"><div class="lbl">B. Fish S2 Pro</div><div class="track"><div class="bar t2"></div></div><div class="val tv">0.935</div></div>
+          <div class="row win"><div class="lbl">C. Higgs TTS 3</div><div class="track"><div class="bar t3"></div></div><div class="val tv">0.911</div></div>
+          <div class="row"><div class="lbl">D. Qwen3 VoiceDesign</div><div class="track"><div class="bar t4"></div></div><div class="val tv">0.848</div></div>
+          <div class="row bad"><div class="lbl">E. ZONOS2 (Q8_0)</div><div class="track"><div class="bar t5"></div></div><div class="val tv">0.688</div></div>
+        </div>
+        <div class="note n5">Higgs는 톤이 조금 흔들린다. 줄별 VoiceDesign은 14살 해온 대사에서 SIM 0.46까지 떨어졌다.</div>
+      </section>
+
+      <!-- S6 matrix -->
+      <section id="s6" class="scene clip" data-start="45.56" data-duration="8.15" data-track-index="0">
+        <div class="kicker">한눈에 보기</div>
+        <div class="h2">장단점 정리</div>
+        <table>
+          <thead><tr><th>방식</th><th>발음</th><th>톤 유지</th><th>감정</th><th>한 줄 평</th></tr></thead>
+          <tbody>
+            <tr class="tr1"><td class="m">A. Qwen3 Base</td><td class="g">12/12</td><td class="g">0.935</td><td class="r">17%</td><td>음색은 일관, 감정 없음</td></tr>
+            <tr class="tr2"><td class="m">B. Fish S2 Pro</td><td class="g">24/24</td><td class="g">0.935</td><td class="r">21%</td><td>한국어 감정 태그 거의 무반응</td></tr>
+            <tr class="tr3 win"><td class="m">C. Higgs TTS 3</td><td>23/24</td><td>0.911</td><td>62%</td><td>감정 표현 최강 · 청취 1위</td></tr>
+            <tr class="tr4"><td class="m">D. Qwen3 VD</td><td class="g">12/12</td><td>0.848</td><td>33%</td><td>줄마다 목소리가 바뀜</td></tr>
+            <tr class="tr5"><td class="m">E. ZONOS2</td><td class="r">2/24</td><td class="r">0.688</td><td>33%</td><td>한국어 발음 붕괴</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- L1 listen: 01_haram_knife -->
+      <section id="l1" class="scene clip listen" data-start="53.71" data-duration="20.98" data-track-index="0">
+        <div class="kicker">직접 들어보기 · 1/3 <span class="lmeta">하람 · 분노 · 울며 고함</span></div>
+        <div class="quote">“근데 왜 살아서… 왜 내 옆에서… 왜 날 구해 줬는데!”</div>
+        <div class="lrows">
+          <div class="lrow lr11"><div class="lbl">A. Qwen3 Base 클론<small>1차 · 감정 지시 없음</small></div><div class="ltrack"><div class="lfill lf11"></div></div><div class="ldur">6.4s</div></div>
+          <div class="lrow lr12"><div class="lbl">D. Qwen3 VoiceDesign<small>줄마다 감정 서술</small></div><div class="ltrack"><div class="lfill lf12"></div></div><div class="ldur">4.7s</div></div>
+          <div class="lrow win lr13"><div class="lbl">C. Higgs TTS 3<small>클론 + 감정 토큰 · 선정</small></div><div class="ltrack"><div class="lfill lf13"></div></div><div class="ldur">4.0s</div></div>
+        </div>
+        <div class="foot">2026-10-03 재생성 샘플 · 지표 측정 때와 다른 테이크 · B(Fish)·E(ZONOS2)는 재생성하지 않음</div>
+      </section>
+      <!-- L2 listen: 04_yuri_sorry -->
+      <section id="l2" class="scene clip listen" data-start="74.69" data-duration="21.6" data-track-index="0">
+        <div class="kicker">직접 들어보기 · 2/3 <span class="lmeta">유리 · 무력감 · 울음</span></div>
+        <div class="quote">“…미안. 내가 미쳤나 봐. 미안해, 미안해…”</div>
+        <div class="lrows">
+          <div class="lrow lr21"><div class="lbl">A. Qwen3 Base 클론<small>1차 · 감정 지시 없음</small></div><div class="ltrack"><div class="lfill lf21"></div></div><div class="ldur">4.8s</div></div>
+          <div class="lrow lr22"><div class="lbl">D. Qwen3 VoiceDesign<small>줄마다 감정 서술</small></div><div class="ltrack"><div class="lfill lf22"></div></div><div class="ldur">7.6s</div></div>
+          <div class="lrow win lr23"><div class="lbl">C. Higgs TTS 3<small>클론 + 감정 토큰 · 선정</small></div><div class="ltrack"><div class="lfill lf23"></div></div><div class="ldur">4.9s</div></div>
+        </div>
+        <div class="foot">2026-10-03 재생성 샘플 · 지표 측정 때와 다른 테이크 · B(Fish)·E(ZONOS2)는 재생성하지 않음</div>
+      </section>
+      <!-- L3 listen: 12_baek_kneel -->
+      <section id="l3" class="scene clip listen" data-start="96.29" data-duration="15.03" data-track-index="0">
+        <div class="kicker">직접 들어보기 · 3/3 <span class="lmeta">백 회장 · 위압 · 낮고 느리게</span></div>
+        <div class="quote">“무릎 꿇어라. 늘 하던 대로.”</div>
+        <div class="lrows">
+          <div class="lrow lr31"><div class="lbl">A. Qwen3 Base 클론<small>1차 · 감정 지시 없음</small></div><div class="ltrack"><div class="lfill lf31"></div></div><div class="ldur">3.3s</div></div>
+          <div class="lrow lr32"><div class="lbl">D. Qwen3 VoiceDesign<small>줄마다 감정 서술</small></div><div class="ltrack"><div class="lfill lf32"></div></div><div class="ldur">4.0s</div></div>
+          <div class="lrow win lr33"><div class="lbl">C. Higgs TTS 3<small>클론 + 감정 토큰 · 선정</small></div><div class="ltrack"><div class="lfill lf33"></div></div><div class="ldur">2.8s</div></div>
+        </div>
+        <div class="foot">2026-10-03 재생성 샘플 · 지표 측정 때와 다른 테이크 · B(Fish)·E(ZONOS2)는 재생성하지 않음</div>
+      </section>
+
+      <!-- S7 decision -->
+      <section id="s7" class="scene clip" data-start="111.32" data-duration="8.3" data-track-index="0">
+        <div class="kicker">결론</div>
+        <div class="h1" style="font-size: 84px">Higgs TTS 3 선정, 그러나 도입은 보류</div>
+        <div class="flow">
+          <div class="step f1">Higgs 선정<small>청취 평가 1위</small></div>
+          <div class="arrow a1">→</div>
+          <div class="step f2">623줄 생성<small>RTX 5080 약 19분</small></div>
+          <div class="arrow a2">→</div>
+          <div class="step hold f3">보류<small>프로토타입엔 연기 품질이 애매</small></div>
+        </div>
+        <div class="sub s7d" style="margin-top: 50px">다음 후보: 감정별 레퍼런스 클론 · 상용 API 재조사 · 핵심 장면만 부분 도입</div>
+      </section>
+
+      <!-- audio -->
+      <audio id="n_s1" src="assets/narration/s1.wav" data-start="0.40" data-duration="5.0" data-track-index="4" data-volume="1"></audio>
+      <audio id="n_s2" src="assets/narration/s2.wav" data-start="6.60" data-duration="8.66" data-track-index="4" data-volume="1"></audio>
+      <audio id="n_s3" src="assets/narration/s3.wav" data-start="16.46" data-duration="9.27" data-track-index="4" data-volume="1"></audio>
+      <audio id="n_s4" src="assets/narration/s4.wav" data-start="26.93" data-duration="7.56" data-track-index="4" data-volume="1"></audio>
+      <audio id="n_s5" src="assets/narration/s5.wav" data-start="35.93" data-duration="8.83" data-track-index="4" data-volume="1"></audio>
+      <audio id="n_s6" src="assets/narration/s6.wav" data-start="45.96" data-duration="6.95" data-track-index="4" data-volume="1"></audio>
+      <audio id="n_l1" src="assets/narration/l1.wav" data-start="54.11" data-duration="3.04" data-track-index="4" data-volume="1"></audio>
+      <audio id="v1a" src="assets/voice/01_haram_knife/A_qwen_base.wav" data-start="57.65" data-duration="6.44" data-track-index="1" data-volume="1"></audio>
+      <audio id="v1d" src="assets/voice/01_haram_knife/D_qwen_design.wav" data-start="64.59" data-duration="4.71" data-track-index="2" data-volume="1"></audio>
+      <audio id="v1c" src="assets/voice/01_haram_knife/C_higgs_v3_2.wav" data-start="69.80" data-duration="3.99" data-track-index="3" data-volume="1"></audio>
+      <audio id="n_l2" src="assets/narration/l2.wav" data-start="75.09" data-duration="1.59" data-track-index="4" data-volume="1"></audio>
+      <audio id="v2a" src="assets/voice/04_yuri_sorry/A_qwen_base.wav" data-start="77.18" data-duration="4.75" data-track-index="1" data-volume="1"></audio>
+      <audio id="v2d" src="assets/voice/04_yuri_sorry/D_qwen_design.wav" data-start="82.43" data-duration="7.59" data-track-index="2" data-volume="1"></audio>
+      <audio id="v2c" src="assets/voice/04_yuri_sorry/C_higgs_v3_1.wav" data-start="90.52" data-duration="4.87" data-track-index="3" data-volume="1"></audio>
+      <audio id="n_l3" src="assets/narration/l3.wav" data-start="96.69" data-duration="2.14" data-track-index="4" data-volume="1"></audio>
+      <audio id="v3a" src="assets/voice/12_baek_kneel/A_qwen_base.wav" data-start="99.33" data-duration="3.33" data-track-index="1" data-volume="1"></audio>
+      <audio id="v3d" src="assets/voice/12_baek_kneel/D_qwen_design.wav" data-start="103.16" data-duration="3.95" data-track-index="2" data-volume="1"></audio>
+      <audio id="v3c" src="assets/voice/12_baek_kneel/C_higgs_v3_2.wav" data-start="107.61" data-duration="2.81" data-track-index="3" data-volume="1"></audio>
+      <audio id="n_s7" src="assets/narration/s7.wav" data-start="111.72" data-duration="7.1" data-track-index="4" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const E = "power3.out";
+      // 장면별 [시작, 끝] — narration/retime.py가 나레이션 길이에 맞춰 다시 쓴다
+      const T = { s1: [0.0, 6.20], s2: [6.2, 16.06], s3: [16.06, 26.53], s4: [26.53, 35.53], s5: [35.53, 45.56], s6: [45.56, 53.71], l1: [53.71, 74.69], l2: [74.69, 96.29], l3: [96.29, 111.32], s7: [111.32, 119.62] };
+      const at = (s, dt) => T[s][0] + dt;
+      const out = (s, d = 0.4) => tl.to("#" + s, { opacity: 0, duration: d }, T[s][1] - d);
+
+      // S1
+      tl.fromTo(".s1a", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, at("s1", 0.2));
+      tl.fromTo(".s1b", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: E }, at("s1", 0.4));
+      tl.fromTo(".s1c .chip", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: E }, at("s1", 1.1));
+      out("s1");
+
+      // S2
+      tl.fromTo("#s2 .kicker, #s2 .h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: E }, at("s2", 0.1));
+      tl.fromTo("#s2 .card", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.25, ease: E }, at("s2", 0.7));
+      out("s2");
+
+      // generic bar scene helper
+      function bars(s, cls, widths, valCls, vals) {
+        const scene = "#" + s, start = T[s][0];
+        tl.fromTo(`${scene} .kicker, ${scene} .h2`, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: E }, start + 0.1);
+        tl.fromTo(`${scene} .row`, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: E }, start + 0.5);
+        widths.forEach((w, i) => {
+          tl.fromTo(`${scene} .${cls}${i + 1}`, { width: "0%" }, { width: w + "%", duration: 1.4, ease: "power2.out" }, start + 1.1 + i * 0.15);
+          if (valCls) {
+            tl.fromTo(`${scene} .${valCls}${i + 1}`, { textContent: 0 }, { textContent: vals[i], duration: 1.4, ease: "power2.out", snap: { textContent: 1 } }, start + 1.1 + i * 0.15);
+          }
+        });
+      }
+
+      // S3 emotion
+      bars("s3", "e", [17, 21, 62, 33, 33], "ev", [17, 21, 62, 33, 33]);
+      tl.fromTo("#s3 .row.win", { scale: 1 }, { scale: 1.03, duration: 0.4, yoyo: true, repeat: 1, ease: "sine.inOut", transformOrigin: "left center" }, at("s3", 3.2));
+      tl.fromTo(".n3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, at("s3", 4.0));
+      out("s3");
+
+      // S4 pronunciation
+      bars("s4", "p", [100, 100, 96, 100, 8], "pv", [100, 100, 96, 100, 8]);
+      tl.fromTo(".n4", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, at("s4", 3.4));
+      out("s4");
+
+      // S5 SIM (bar scaled 0.5~1.0 for readability)
+      bars("s5", "t", [87, 87, 82, 70, 38], null, null);
+      tl.fromTo("#s5 .tv", { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.15 }, at("s5", 1.6));
+      tl.fromTo(".n5", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, at("s5", 3.4));
+      out("s5");
+
+      // S6 matrix
+      tl.fromTo("#s6 .kicker, #s6 .h2, #s6 thead", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: E }, at("s6", 0.1));
+      tl.fromTo("#s6 tbody tr", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.25, ease: E }, at("s6", 0.7));
+      tl.to("#s6 tbody tr:not(.win)", { opacity: 0.4, duration: 0.5 }, at("s6", 4.2));
+      out("s6");
+
+      // L listen: 장면 등장(나레이션) → 대사별로 A → D → C 순서 재생 (진행 막대 = 오디오 길이)
+      function intro(s) {
+        const scene = "#" + s;
+        tl.fromTo(`${scene} .kicker, ${scene} .quote`, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: E }, at(s, 0.1));
+        tl.fromTo(`${scene} .lrow`, { opacity: 0, x: -30 }, { opacity: 0.45, x: 0, duration: 0.5, stagger: 0.1, ease: E }, at(s, 0.5));
+        out(s);
+      }
+      function play(scene, row, fill, start, dur) {
+        tl.to(`${scene} ${row}`, { opacity: 1, duration: 0.25 }, start - 0.25);
+        tl.fromTo(`${scene} ${fill}`, { width: "0%" }, { width: "100%", duration: dur, ease: "none" }, start);
+        tl.to(`${scene} ${row}`, { opacity: 0.7, duration: 0.3 }, start + dur);
+      }
+      ["l1", "l2", "l3"].forEach(intro);
+      // listen plays
+      play("#l1", ".lr11", ".lf11", 57.65, 6.44);
+      play("#l1", ".lr12", ".lf12", 64.59, 4.71);
+      play("#l1", ".lr13", ".lf13", 69.80, 3.99);
+      play("#l2", ".lr21", ".lf21", 77.18, 4.75);
+      play("#l2", ".lr22", ".lf22", 82.43, 7.59);
+      play("#l2", ".lr23", ".lf23", 90.52, 4.87);
+      play("#l3", ".lr31", ".lf31", 99.33, 3.33);
+      play("#l3", ".lr32", ".lf32", 103.16, 3.95);
+      play("#l3", ".lr33", ".lf33", 107.61, 2.81);
+
+      // S7 decision
+      tl.fromTo("#s7 .kicker, #s7 .h1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: E }, at("s7", 0.2));
+      tl.fromTo("#s7 .f1, #s7 .a1, #s7 .f2, #s7 .a2, #s7 .f3", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.3, ease: E }, at("s7", 1.0));
+      tl.fromTo(".s7d", { opacity: 0 }, { opacity: 1, duration: 0.6 }, at("s7", 3.0));
+      out("s7", 0.6);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

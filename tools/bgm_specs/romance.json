@@ -1,0 +1,29 @@
+[
+  {
+    "name": "romance_piano_strings",
+    "rationale": "A warm solo piano melody over soft legato strings is the steadiest way to get a consonant, unified Korean-drama romance color that sits gently under dialogue and loops cleanly.",
+    "caption": "Instrumental Korean drama OST romantic piano piece, warm, tender, hopeful and comforting, gentle heartfelt melody on warm grand piano, soft legato string ensemble with warm cello underneath, consistently consonant and sweet harmony, uplifting major tonality throughout, calm steady flow with moderate even dynamics, intimate and peaceful, like a quiet spring afternoon by the sea, lush, warm, polished studio recording, slow tempo, laid-back, seamless looping background music",
+    "lyrics": "[Intro - soft piano]\n\n[Main Theme - piano]\n\n[Verse - strings join]\n\n[Bridge - tender]\n\n[Main Theme - piano and strings]\n\n[Outro - soft piano]",
+    "bpm": 72, "keyscale": "C Major", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, humming, minor key, dissonance, eerie, haunting, horror, dark, suspense, tension, music box, celesta, detuned sounds, reverse effects, drums, heavy percussion, dramatic climax, big crescendo, sudden ending",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "name": "romance_guitar_piano",
+    "rationale": "Fingerpicked acoustic guitar with soft piano and warm cello gives an earthy, sunlit seaside warmth that fits the dusk reunion and the happy spring beach ending equally well.",
+    "caption": "Instrumental warm acoustic romance, gentle fingerpicked nylon acoustic guitar, soft warm piano melody, warm cello and soft strings, tender, hopeful, peaceful and quietly happy, sunlit seaside spring afternoon feeling, consistently consonant and sweet harmony, uplifting major tonality throughout, intimate and cozy, smooth moderate even dynamics, warm, airy, natural live recording feel, slice-of-life soundtrack, slow tempo, laid-back, seamless looping background music",
+    "lyrics": "[Intro - acoustic guitar]\n\n[Main Theme - guitar and piano]\n\n[Verse - cello joins]\n\n[Bridge - warm]\n\n[Main Theme - guitar and piano]\n\n[Outro - acoustic guitar]",
+    "bpm": 76, "keyscale": "G Major", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, humming, minor key, dissonance, eerie, haunting, horror, dark, suspense, tension, music box, celesta, detuned sounds, reverse effects, drums, heavy percussion, electric guitar, dramatic climax, big crescendo, sudden ending",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "name": "romance_waltz_lullaby",
+    "rationale": "A soft 3/4 lullaby-waltz with piano, warm strings and gentle flute adds a tender swaying motion while keeping the harmony sweet, stable and comforting from start to finish.",
+    "caption": "Instrumental gentle romantic waltz, tender and comforting lullaby feeling, warm soft piano melody, warm legato strings, gentle warm flute countermelody, soft cello bass, hopeful, sweet and peaceful, healing and heartwarming, consistently consonant and sweet harmony, uplifting major tonality throughout, smooth moderate even dynamics, intimate and warm, lush, polished orchestral chamber recording, slow tempo, softly swaying, seamless looping background music",
+    "lyrics": "[Intro - soft piano]\n\n[Main Theme - piano waltz]\n\n[Verse - flute and strings]\n\n[Bridge - tender]\n\n[Main Theme - piano and strings]\n\n[Outro - soft piano]",
+    "bpm": 66, "keyscale": "F Major", "timesignature": "3/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, humming, minor key, dissonance, eerie, haunting, horror, dark, suspense, tension, music box, celesta, detuned sounds, reverse effects, drums, heavy percussion, dramatic climax, big crescendo, sudden ending",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  }
+]

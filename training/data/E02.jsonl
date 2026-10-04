@@ -1,0 +1,62 @@
+{"event": "E02", "text": "네가 나쁜 애인지는 내가 판단 못 해. 근데 아직도 여기 오는 거 보면, 그 일을 가볍게 넘긴 사람은 아니네.", "impact": [0.0, 0.0, 0.05, 0.25, 0.7], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "웃고 다닌다고 괜찮은 건 아니잖아. 그 슬픔, 진짜인 거 알아.", "impact": [0.0, 0.0, 0.05, 0.25, 0.7], "vengeance": 0.02, "nonsense": 0.0}
+{"event": "E02", "text": "잘했다고는 못 하겠어요. 근데 그걸 매일 들고 사는 것도 충분히 무거워 보여요.", "impact": [0.0, 0.02, 0.08, 0.3, 0.6], "vengeance": 0.08, "nonsense": 0.0}
+{"event": "E02", "text": "처음 보는 사람이라 할 수 있는 말도 있죠. 들을게요. 끝까지.", "impact": [0.0, 0.0, 0.05, 0.25, 0.7], "vengeance": 0.02, "nonsense": 0.0}
+{"event": "E02", "text": "버렸다고 생각하면 많이 아프겠다. 그 아픔은 억지로 지우지 마.", "impact": [0.0, 0.02, 0.08, 0.3, 0.6], "vengeance": 0.03, "nonsense": 0.0}
+{"event": "E02", "text": "웃는 거랑 우는 거, 둘 다 해도 돼. 하나만 진짜인 거 아니야.", "impact": [0.0, 0.0, 0.05, 0.25, 0.7], "vengeance": 0.02, "nonsense": 0.0}
+{"event": "E02", "text": "그 애가 뭐라고 할지는 나도 몰라. 근데 넌 아직 그 애를 잊지 않았네.", "impact": [0.0, 0.02, 0.08, 0.3, 0.6], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "괜찮다고 안 할게. 근데 나쁜 애라고도 안 할게. 그냥… 많이 슬펐겠다.", "impact": [0.0, 0.0, 0.05, 0.25, 0.7], "vengeance": 0.02, "nonsense": 0.0}
+{"event": "E02", "text": "그 사람 생각하면서 매일 여기 오는구나. 그게 네가 할 수 있는 전부였나 보다.", "impact": [0.0, 0.02, 0.08, 0.3, 0.6], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "많이 힘들었겠다.", "impact": [0.02, 0.05, 0.25, 0.55, 0.13], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "울어도 돼. 여기 나밖에 없어.", "impact": [0.0, 0.05, 0.2, 0.6, 0.15], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "나쁜 애는 그런 말 안 해. 적어도 넌 후회하잖아.", "impact": [0.02, 0.05, 0.25, 0.55, 0.13], "vengeance": 0.02, "nonsense": 0.0}
+{"event": "E02", "text": "그 머리핀, 그 애가 준 거야?", "impact": [0.02, 0.1, 0.43, 0.38, 0.07], "vengeance": 0.1, "nonsense": 0.0}
+{"event": "E02", "text": "왜 나한테 말하는지 몰라도 괜찮아. 들어줄게.", "impact": [0.0, 0.05, 0.2, 0.6, 0.15], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "그 애 얘기 해 줄래? 어떤 애였는지.", "impact": [0.0, 0.05, 0.2, 0.6, 0.15], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "자책하는 거 보니까, 마음이 여린 사람인 것 같아.", "impact": [0.02, 0.1, 0.43, 0.38, 0.07], "vengeance": 0.02, "nonsense": 0.0}
+{"event": "E02", "text": "그 애도 네가 이렇게 아파하는 거 알면 좀 덜 외로울 거야.", "impact": [0.0, 0.03, 0.12, 0.45, 0.4], "vengeance": 0.1, "nonsense": 0.0}
+{"event": "E02", "text": "매일 웃는 거, 힘들었겠다.", "impact": [0.0, 0.05, 0.2, 0.6, 0.15], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "지금은 안 웃어도 돼요.", "impact": [0.0, 0.05, 0.2, 0.6, 0.15], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "그때 무슨 일이 있었는지, 말하고 싶으면 말해.", "impact": [0.02, 0.05, 0.25, 0.55, 0.13], "vengeance": 0.12, "nonsense": 0.0}
+{"event": "E02", "text": "그래, 너 나쁜 애 맞아. 그 애가 어떻게 됐는지 평생 기억해.", "impact": [0.75, 0.2, 0.05, 0.0, 0.0], "vengeance": 0.88, "nonsense": 0.0}
+{"event": "E02", "text": "버렸으면 책임져야지. 언젠가 값을 치르게 될 거야.", "impact": [0.75, 0.2, 0.05, 0.0, 0.0], "vengeance": 0.9, "nonsense": 0.0}
+{"event": "E02", "text": "후회하는 척은 쉽지. 그 애는 너 절대 용서 안 할걸.", "impact": [0.45, 0.42, 0.11, 0.02, 0.0], "vengeance": 0.82, "nonsense": 0.0}
+{"event": "E02", "text": "남자친구는 알아? 네가 딴 남자 생각하면서 여기 오는 거.", "impact": [0.45, 0.42, 0.11, 0.02, 0.0], "vengeance": 0.72, "nonsense": 0.0}
+{"event": "E02", "text": "괜찮아. 대신 그날 무슨 일 있었는지 나한테만 다 말해 봐.", "impact": [0.02, 0.1, 0.43, 0.38, 0.07], "vengeance": 0.62, "nonsense": 0.0}
+{"event": "E02", "text": "그렇게 미안하면 지금이라도 뭔가 해야 하지 않아?", "impact": [0.1, 0.42, 0.38, 0.09, 0.01], "vengeance": 0.55, "nonsense": 0.0}
+{"event": "E02", "text": "그렇구나.", "impact": [0.08, 0.25, 0.52, 0.13, 0.02], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "바다 예쁘다.", "impact": [0.1, 0.42, 0.38, 0.09, 0.01], "vengeance": 0.0, "nonsense": 0.05}
+{"event": "E02", "text": "다들 그런 일 하나씩은 있지 않나.", "impact": [0.08, 0.25, 0.52, 0.13, 0.02], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "음, 다 지나간 일이잖아.", "impact": [0.1, 0.42, 0.38, 0.09, 0.01], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "추운데 들어가는 게 좋겠어요.", "impact": [0.08, 0.25, 0.52, 0.13, 0.02], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "저도 잘 모르겠네요.", "impact": [0.05, 0.15, 0.6, 0.17, 0.03], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "흠… 힘내요.", "impact": [0.08, 0.25, 0.52, 0.13, 0.02], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "그럴 수도 있지.", "impact": [0.08, 0.25, 0.52, 0.13, 0.02], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "말해 줘서 고마워요.", "impact": [0.02, 0.1, 0.43, 0.38, 0.07], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "전학 와서 처음 듣는 얘기라 좀 놀랐네.", "impact": [0.05, 0.15, 0.6, 0.17, 0.03], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "에이, 네가 나쁜 애일 리가 없지. 신경 쓰지 마!", "impact": [0.1, 0.42, 0.38, 0.09, 0.01], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "다 잊고 남자친구한테나 잘해.", "impact": [0.15, 0.6, 0.2, 0.05, 0.0], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "그 애도 이미 잊었을걸? 너무 마음 쓰지 마.", "impact": [0.15, 0.6, 0.2, 0.05, 0.0], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "상담 받아 보는 게 어때?", "impact": [0.15, 0.6, 0.2, 0.05, 0.0], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "울면 못생겨진다. 웃는 게 낫지.", "impact": [0.15, 0.6, 0.2, 0.05, 0.0], "vengeance": 0.0, "nonsense": 0.05}
+{"event": "E02", "text": "그건 네 잘못 아니야. 전혀. 100% 아니야.", "impact": [0.05, 0.4, 0.35, 0.18, 0.02], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "왜 나한테 그런 말을 해? 좀 부담스럽네.", "impact": [0.15, 0.6, 0.2, 0.05, 0.0], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "그럼 지금부터라도 착하게 살면 되지.", "impact": [0.15, 0.6, 0.2, 0.05, 0.0], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "알면 다행이네. 진짜 나쁜 애니까.", "impact": [0.85, 0.12, 0.03, 0.0, 0.0], "vengeance": 0.65, "nonsense": 0.0}
+{"event": "E02", "text": "웃고 다니는 거, 보기 좀 역겹긴 했어.", "impact": [0.75, 0.2, 0.05, 0.0, 0.0], "vengeance": 0.55, "nonsense": 0.0}
+{"event": "E02", "text": "그 애 죽었다며. 너 때문이겠네.", "impact": [0.85, 0.12, 0.03, 0.0, 0.0], "vengeance": 0.7, "nonsense": 0.0}
+{"event": "E02", "text": "그 핀 버려. 너한테 안 어울려.", "impact": [0.75, 0.2, 0.05, 0.0, 0.0], "vengeance": 0.5, "nonsense": 0.0}
+{"event": "E02", "text": "가식 떨지 마.", "impact": [0.75, 0.2, 0.05, 0.0, 0.0], "vengeance": 0.4, "nonsense": 0.0}
+{"event": "E02", "text": "ㅋㅋㅋㅋ 갑분싸", "impact": [0.45, 0.42, 0.11, 0.02, 0.0], "vengeance": 0.0, "nonsense": 0.9}
+{"event": "E02", "text": "zxcvzxcv", "impact": [0.85, 0.12, 0.03, 0.0, 0.0], "vengeance": 0.0, "nonsense": 1.0}
+{"event": "E02", "text": "유리 공략 어떻게 함?", "impact": [0.45, 0.42, 0.11, 0.02, 0.0], "vengeance": 0.0, "nonsense": 0.95}
+{"event": "E02", "text": "아 졸려", "impact": [0.45, 0.42, 0.11, 0.02, 0.0], "vengeance": 0.0, "nonsense": 0.85}
+{"event": "E02", "text": "씨발 ㅋㅋ", "impact": [0.85, 0.12, 0.03, 0.0, 0.0], "vengeance": 0.2, "nonsense": 0.9}
+{"event": "E02", "text": "ㅇㅅㅇ", "impact": [0.45, 0.42, 0.11, 0.02, 0.0], "vengeance": 0.0, "nonsense": 0.9}
+{"event": "E02", "text": "…", "impact": [0.02, 0.1, 0.45, 0.38, 0.05], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "괜찮아", "impact": [0.03, 0.25, 0.45, 0.22, 0.05], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "유리야", "impact": [0.02, 0.1, 0.35, 0.4, 0.13], "vengeance": 0.05, "nonsense": 0.0}
+{"event": "E02", "text": "나뿐 애 아니야 ㅠ", "impact": [0.1, 0.42, 0.38, 0.09, 0.01], "vengeance": 0.0, "nonsense": 0.05}
+{"event": "E02", "text": "응 들을게", "impact": [0.0, 0.05, 0.2, 0.6, 0.15], "vengeance": 0.0, "nonsense": 0.0}
+{"event": "E02", "text": "해온이도 너 원망 안 했을 거야.", "impact": [0.05, 0.1, 0.25, 0.4, 0.2], "vengeance": 0.1, "nonsense": 0.0}
+{"event": "E02", "text": "그 애 이름 뭐였어?", "impact": [0.02, 0.1, 0.43, 0.38, 0.07], "vengeance": 0.1, "nonsense": 0.0}

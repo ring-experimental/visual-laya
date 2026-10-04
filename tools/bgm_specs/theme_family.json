@@ -1,0 +1,102 @@
+[
+  {
+    "track": "theme_ashes",
+    "name": "theme_ashes_piano_quartet",
+    "rationale": "Solo piano states the descending-then-rising lighthouse motif over sustained chamber strings, which gives the theme a cold, dignified surface with a faint warm undertone that can play as loss or as redemption.",
+    "caption": "Instrumental cinematic neoclassical main theme, solo soft intimate grand piano carrying a short recurring motif that gently descends then rises again, sustained legato string quartet, warm low cello underneath, melancholic, lonely yet dignified and elegant, quiet restrained grief with a faint ember of warmth at the bottom, misty winter harbor at night, distant lighthouse glow, consistent cool minor color throughout, smooth moderate even dynamics, intimate close-miked piano, natural live chamber recording feel, spacious soft reverb, in the style of a modern piano-and-strings film score, slow tempo, flowing rubato feel, seamless looping background music",
+    "lyrics": "[Intro - solo piano]\n\n[Main Theme - piano motif]\n\n[Verse - strings join]\n\n[Bridge - warm cello]\n\n[Main Theme - piano and strings]\n\n[Outro - solo piano]",
+    "bpm": 66, "keyscale": "D Minor", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, synth lead, electric guitar, bass drop, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, dissonant clusters, upbeat, bouncy rhythm",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "theme_ashes",
+    "name": "theme_ashes_cello_pad",
+    "rationale": "Answers the piano motif with a solo cello over a misty ambient pad, which gives the main theme a darker, more atmospheric reading for night scenes and the dawn ending.",
+    "caption": "Instrumental cinematic ambient neoclassical main theme, soft intimate grand piano playing a short recurring motif that gently descends then rises again, solo cello answering the motif with long expressive legato lines, soft sustained string ensemble, misty ambient pad like harbor fog, melancholic, solitary, dignified and elegant, quiet sorrow with a faint glow of warmth underneath, foggy seaside night, lighthouse beam through mist, consistent cool minor color throughout, smooth moderate even dynamics, warm close piano, lush spacious reverb, polished orchestral film score sound, slow tempo, calm and steady, seamless looping background music",
+    "lyrics": "[Intro - ambient pad and piano]\n\n[Main Theme - piano motif]\n\n[Verse - solo cello]\n\n[Bridge - soft strings]\n\n[Main Theme - piano and cello]\n\n[Outro - ambient pad and piano]",
+    "bpm": 62, "keyscale": "D Minor", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, synth lead, arpeggiator, electric guitar, big crescendo, climax, loud brass, sudden hits, abrupt ending, dissonant clusters, upbeat, bouncy rhythm",
+    "lm_temperature": 0.65, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "calm_sea",
+    "name": "calm_sea_piano_strings",
+    "rationale": "Uses a gently flowing piano and soft strings in a major key with a longing edge, so it sounds warm in the prologue and lonely in later scenes, and it hints at the motif's falling-then-rising shape.",
+    "caption": "Instrumental calm ambient neoclassical, soft intimate grand piano with gently flowing broken chords, a short motif that softly descends then rises, soft sustained strings, warm cello pedal tones, airy ambient pad like sea breeze, peaceful, contemplative, quietly longing and nostalgic, open quiet harbor town, slow waves on a cape with a white lighthouse, pale sky over the sea, consistently consonant gentle harmony with a wistful tint, smooth moderate even dynamics, warm, airy, natural live recording feel, spacious reverb, slow tempo, laid-back and breathing, seamless looping background music",
+    "lyrics": "[Intro - piano and pad]\n\n[Main Theme - piano]\n\n[Verse - strings join]\n\n[Bridge - wistful]\n\n[Main Theme - piano and strings]\n\n[Outro - piano and pad]",
+    "bpm": 70, "keyscale": "F Major", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, chimes, eerie, creepy, dissonance, synth lead, electric guitar, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, upbeat, bouncy rhythm",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "calm_sea",
+    "name": "calm_sea_rocking_cello",
+    "rationale": "A slow 6/8 legato swell and a solo cello line give the feel of waves and breathing without any percussive bounce, and the relative-minor color brings out the longing.",
+    "caption": "Instrumental ambient seaside soundtrack, soft intimate grand piano in slow gently rocking legato phrases like rolling waves, short motif that descends then rises, solo cello singing a long tender line, soft string ensemble pads, warm ambient textures, calm, reflective, gentle longing, bittersweet nostalgia, foggy harbor morning, quiet coastal road by the sea, distant white lighthouse, consistent soft wistful color throughout, smooth moderate even dynamics, warm, airy, lush soft reverb, natural live recording feel, slow tempo, unhurried, seamless looping background music",
+    "lyrics": "[Intro - soft piano]\n\n[Main Theme - piano]\n\n[Verse - solo cello]\n\n[Bridge - strings swell gently]\n\n[Main Theme - piano and cello]\n\n[Outro - soft piano]",
+    "bpm": 64, "keyscale": "A Minor", "timesignature": "6/8", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, chimes, eerie, creepy, dissonance, synth lead, electric guitar, waltz bounce, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, upbeat",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "sorrow",
+    "name": "sorrow_sparse_piano",
+    "rationale": "A sparse, close-miked solo piano with a slowed-down motif and a soft string bed stays quietly painful and low in fatigue, which suits heavy reuse under vulnerable dialogue.",
+    "caption": "Instrumental minimalist sad piano, soft intimate grand piano playing slow sparse phrases, the short motif that descends then rises played slower and more fragile, soft sustained strings far in the background, quiet warm cello drone, quietly painful, vulnerable, tender, introspective sadness, restrained and gentle, rain on a window at night, empty hospital room, consistent soft minor color throughout, smooth moderate even dynamics, intimate close-miked piano with soft felt warmth, natural live recording feel, gentle room reverb, slow tempo, lots of space between notes, seamless looping background music",
+    "lyrics": "[Intro - solo piano]\n\n[Main Theme - piano motif]\n\n[Verse - soft strings]\n\n[Bridge - melancholic]\n\n[Main Theme - piano]\n\n[Outro - solo piano]",
+    "bpm": 60, "keyscale": "D Minor", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, synth lead, electric guitar, dramatic, melodramatic, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, dissonant clusters, upbeat, bouncy rhythm",
+    "lm_temperature": 0.65, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "sorrow",
+    "name": "sorrow_cello_duet",
+    "rationale": "A piano and solo cello duet in a slow 3/4 gives an alternate color that is gentle and unsentimental for confessions and moments when characters drop their masks.",
+    "caption": "Instrumental chamber elegy, soft intimate grand piano and solo cello duet, piano gently plays the short motif that descends then rises, cello answers with long soft legato sighs, faint sustained violas underneath, quietly painful, vulnerable, honest, soft sorrow without tears, lonely night by the sea, cold rain, consistent soft minor color throughout, smooth moderate even dynamics, warm intimate, natural live chamber recording feel, soft room reverb, slow tempo, flowing gentle pulse, seamless looping background music",
+    "lyrics": "[Intro - solo piano]\n\n[Main Theme - piano and cello]\n\n[Verse - cello]\n\n[Bridge - low energy]\n\n[Main Theme - piano and cello]\n\n[Outro - solo piano]",
+    "bpm": 63, "keyscale": "A Minor", "timesignature": "3/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, synth lead, electric guitar, waltz bounce, dramatic, melodramatic, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, dissonant clusters, upbeat",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "dawn",
+    "name": "dawn_major_strings",
+    "rationale": "Completes the lighthouse motif in D major (the parallel of the main theme's D minor) on the same piano, with warm strings that brighten gradually but stay within moderate dynamics.",
+    "caption": "Instrumental cinematic neoclassical, soft intimate grand piano playing the short motif that descends then rises, now complete and resolved in bright major, warm legato string ensemble, warm cello, soft airy pad, hopeful, moving, bittersweet tears turning bright, redemption and forgiveness, first light of dawn over the sea, white lighthouse on a cape, mist lifting, consistently consonant warm harmony, uplifting major tonality throughout, smooth moderate even dynamics, warm, bright, airy, natural live recording feel, spacious reverb, in the style of a heartfelt piano-and-strings film score, slow tempo, gentle flowing, seamless looping background music",
+    "lyrics": "[Intro - solo piano]\n\n[Main Theme - piano motif]\n\n[Verse - warm strings join]\n\n[Bridge - hopeful]\n\n[Main Theme - piano and strings]\n\n[Outro - solo piano]",
+    "bpm": 68, "keyscale": "D Major", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, chimes, eerie, minor key, dissonance, synth lead, electric guitar, brass fanfare, epic, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, bouncy rhythm",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "dawn",
+    "name": "dawn_cello_sunrise",
+    "rationale": "Hands the major-key motif from the piano to a solo cello over shimmering high strings, so the scene feels tearful but bright, with a slightly lusher alternate sound.",
+    "caption": "Instrumental cinematic sunrise theme, soft intimate grand piano introducing the short motif that descends then rises in major, solo cello repeating it warmly, lush sustained high strings like soft morning light, gentle warm pad, tender, luminous, deeply moving yet bright, quiet joy after long darkness, dawn breaking over a foggy harbor, light returning to the lighthouse, consistently consonant sweet harmony, uplifting major tonality throughout, smooth moderate even dynamics, warm, lush, airy, polished orchestral film score sound, slow tempo, calm and steady, seamless looping background music",
+    "lyrics": "[Intro - piano]\n\n[Main Theme - piano motif]\n\n[Verse - solo cello]\n\n[Bridge - lush strings]\n\n[Main Theme - cello and piano]\n\n[Outro - piano]",
+    "bpm": 72, "keyscale": "G Major", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, music box, celesta, bells, glockenspiel, chimes, eerie, minor key, dissonance, synth lead, electric guitar, brass fanfare, epic, big crescendo, climax, loud dynamics, sudden hits, abrupt ending, bouncy rhythm",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "ending_bad",
+    "name": "ending_bad_detuned_drone",
+    "rationale": "Breaks the main theme's piano motif on a slightly detuned piano over a steady dissonant string drone, so the unease is one constant texture rather than sudden events, and it never resolves.",
+    "caption": "Instrumental dark ambient neoclassical, slightly detuned old upright piano playing the short motif that descends then rises but left incomplete and fading, constant low dissonant sustained string drone throughout, cold hollow ambient pad, faint distant tinkling high piano notes, hollow, empty, numb, unsettling, victory that leaves nothing, empty mansion at night, cold rain, unresolved suspended harmony from start to finish, consistent eerie texture throughout, smooth moderate even dynamics, cold, distant, washed-out reverb, slow tempo, static and suspended, seamless looping background music",
+    "lyrics": "[Intro - drone and detuned piano]\n\n[Main Theme - broken piano motif]\n\n[Verse - low energy]\n\n[Bridge - hollow]\n\n[Main Theme - broken piano motif]\n\n[Outro - drone and detuned piano]",
+    "bpm": 58, "keyscale": "D Minor", "timesignature": "4/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, jump scare, sudden hits, horror stingers, loud noise, synth lead, electric guitar, big crescendo, climax, resolution, major key, hopeful, warm, abrupt ending, upbeat, bouncy rhythm",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  },
+  {
+    "track": "ending_bad",
+    "name": "ending_bad_music_box_ruin",
+    "rationale": "Plays a slow, warped music-box echo of the motif over a hollow cello and string pad, which gives the bad endings a steady eerie, ruined color with no resolution.",
+    "caption": "Instrumental eerie melancholic ambient, slow warped music box faintly echoing the short motif that descends then rises, never completing it, soft distant piano notes, hollow sustained cello drone, thin cold string harmonics, dark ambient pad, hollow, desolate, empty triumph, quiet madness, a lonely smile in a mirror, rain on an empty rooftop, unresolved ambiguous harmony throughout, consistent eerie dreamlike texture from start to finish, smooth moderate even dynamics, cold, distant, lo-fi worn tone, wide reverb, slow tempo, suspended in time, seamless looping background music",
+    "lyrics": "[Intro - music box and drone]\n\n[Main Theme - broken motif]\n\n[Verse - cello drone]\n\n[Bridge - dreamy]\n\n[Main Theme - broken motif]\n\n[Outro - music box and drone]",
+    "bpm": 60, "keyscale": "D Minor", "timesignature": "3/4", "duration": 150,
+    "lm_negative_prompt": "vocals, singing, choir, drums, percussion, ticking, staccato, pizzicato, waltz bounce, jump scare, sudden hits, horror stingers, loud noise, synth lead, electric guitar, big crescendo, climax, resolution, major key, hopeful, abrupt ending, upbeat",
+    "lm_temperature": 0.7, "lm_cfg_scale": 2.5
+  }
+]

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>재의 백작</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+<div id="stage">
+  <!-- 게임 화면 -->
+  <div id="bg" class="layer"></div>
+  <div id="bg-next" class="layer"></div>
+  <div id="sprites" class="layer"></div>
+  <div id="cg" class="layer hidden"></div>
+  <div id="fx" class="layer"></div>
+  <div id="embers" class="layer"></div>
+
+  <div id="hud" class="hidden">
+    <div id="chapter-label"></div>
+    <div id="quick">
+      <button data-act="hearts" title="호감도 (H)">♥</button>
+      <button data-act="log" title="대사 기록 (L)">LOG</button>
+      <button data-act="auto" title="자동 진행 (A)">AUTO</button>
+      <button data-act="skip" title="스킵 (S)">SKIP</button>
+      <button data-act="save" title="저장">SAVE</button>
+      <button data-act="load" title="불러오기">LOAD</button>
+      <button data-act="menu" title="메뉴 (Esc)">MENU</button>
+    </div>
+  </div>
+
+  <div id="textbox" class="hidden">
+    <div id="namebox"></div>
+    <div id="text"></div>
+    <div id="next-indicator">▼</div>
+  </div>
+
+  <div id="chapter-card" class="overlay hidden"><div class="inner"><div class="line"></div><h2></h2><div class="line"></div></div></div>
+
+  <!-- 자유 입력 -->
+  <div id="input-panel" class="overlay hidden">
+    <div class="card">
+      <div class="who"><span class="dot"></span><span class="target-name"></span></div>
+      <div class="recent"></div>
+      <p class="prompt"></p>
+      <textarea id="player-line" maxlength="300" rows="3" placeholder="시온으로서 할 말을 입력하세요…"></textarea>
+      <div class="row">
+        <button id="hint-btn" class="ghost">힌트</button>
+        <button id="input-log-btn" class="ghost" title="대사 기록 (Alt+L)">대사 기록</button>
+        <span id="char-count">0 / 300</span>
+        <button id="say-btn" class="primary">말한다 <kbd>Ctrl</kbd>+<kbd>Enter</kbd></button>
+      </div>
+      <p class="hint hidden"></p>
+      <div class="judging hidden"><div class="spinner"></div><span>그 말이 마음에 닿는 중…</span></div>
+    </div>
+  </div>
+
+  <div id="delta-pop" class="hidden"></div>
+
+  <!-- 호감도 -->
+  <div id="hearts" class="panel hidden">
+    <h3>마음의 온도</h3>
+    <div id="heart-list"></div>
+    <div class="venge"><span>복수심</span><div class="bar"><i></i></div><b></b></div>
+    <p class="small">H 키로 열고 닫기</p>
+  </div>
+
+  <!-- 판정 상세 (디버그) -->
+  <div id="judge-detail" class="panel hidden"></div>
+
+  <!-- 백로그 -->
+  <div id="log" class="overlay hidden"><div class="sheet"><h3>대사 기록</h3><div id="log-list"></div><button class="close">닫기</button></div></div>
+
+  <!-- 세이브/로드 -->
+  <div id="slots" class="overlay hidden"><div class="sheet"><h3 id="slots-title"></h3><div id="slot-list"></div><button class="close">닫기</button></div></div>
+
+  <!-- 메뉴 -->
+  <div id="menu" class="overlay hidden">
+    <div class="sheet narrow">
+      <h3>메뉴</h3>
+      <label>텍스트 속도 <input id="opt-speed" type="range" min="0" max="100"></label>
+      <label>자동 진행 대기 <input id="opt-auto" type="range" min="0" max="100"></label>
+      <label>음량 <input id="opt-vol" type="range" min="0" max="100"></label>
+      <label>음성 <input id="opt-voice" type="range" min="0" max="100"></label>
+      <label class="check"><input id="opt-hearts" type="checkbox"> 호감도 변화 표시</label>
+      <label class="check"><input id="opt-detail" type="checkbox"> Laya 판정 상세 표시</label>
+      <button id="to-title">타이틀로</button>
+      <button class="close">돌아가기</button>
+    </div>
+  </div>
+
+  <!-- 타이틀 -->
+  <div id="title" class="overlay">
+    <canvas id="title-sparks"></canvas>
+    <div class="title-inner">
+      <p class="sub">THE COUNT OF ASHES</p>
+      <h1>재의 백작</h1>
+      <p class="tag">재는 다시 타지 않는다.</p>
+      <nav>
+        <button data-title="new">새 게임</button>
+        <button data-title="continue">이어하기</button>
+        <button data-title="load">불러오기</button>
+        <button data-title="endings">엔딩 목록</button>
+        <button data-title="menu">설정</button>
+      </nav>
+      <p id="server-status" class="status"></p>
+    </div>
+  </div>
+
+  <div id="endings" class="overlay hidden"><div class="sheet narrow"><h3>엔딩 목록</h3><div id="ending-list"></div><button class="close">닫기</button></div></div>
+
+  <div id="credits" class="overlay hidden"><div class="roll"></div></div>
+</div>
+<script src="engine.js?v=16"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+# Higgs TTS 3 deploy for a single 16GB GPU (vllm_omni/deploy/higgs_multimodal_qwen3.yaml 기반).
+# 동시 요청 2개, 문맥 4096으로 줄여 Stage0(~4B, bf16) + Stage1(codec)을 16GB 안에 넣는다.
+async_chunk: true
+
+connectors:
+  connector_of_shared_memory:
+    name: SharedMemoryConnector
+    extra:
+      codec_streaming: true
+      codec_chunk_frames: 25
+      codec_left_context_frames: 25
+      codec_right_holdback_frames: 4
+      initial_codec_chunk_frames: 1
+      connector_get_sleep_s: 0.01
+      connector_get_max_wait_first_chunk: 5000
+      connector_get_max_wait: 500
+
+stages:
+  - stage_id: 0
+    max_num_seqs: 2
+    gpu_memory_utilization: 0.62
+    enforce_eager: true
+    attention_backend: TRITON_ATTN  # FLASHINFER는 nvcc JIT 필요
+    attention_config:
+      use_trtllm_attention: false
+    trust_remote_code: true
+    enable_prefix_caching: true
+    async_scheduling: false
+    max_num_batched_tokens: 4096
+    max_model_len: 4096
+    devices: "0"
+    output_connectors:
+      to_stage_1: connector_of_shared_memory
+    default_sampling_params:
+      temperature: 1.0
+      top_p: 0.95
+      top_k: 50
+      max_tokens: 2048
+      seed: 42
+      repetition_penalty: 1.0
+
+  - stage_id: 1
+    max_num_seqs: 2
+    gpu_memory_utilization: 0.2
+    enforce_eager: true
+    trust_remote_code: true
+    enable_prefix_caching: false
+    async_scheduling: false
+    max_num_batched_tokens: 16384
+    max_model_len: 16384
+    devices: "0"
+    input_connectors:
+      from_stage_0: connector_of_shared_memory
+    default_sampling_params:
+      temperature: 0.0
+      top_p: 1.0
+      top_k: -1
+      max_tokens: 16384
+      seed: 42
+      repetition_penalty: 1.0

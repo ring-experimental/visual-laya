@@ -1,0 +1,15 @@
+{
+ "_comment": "줄별 감정 토큰 지정 (tools/voice_emotion.py의 표정 기반 자동 지정보다 우선). 키 = 대본 파일:줄, 값 = Higgs 토큰. 처음 12줄은 비교 샘플에서 고른 설정.",
+ "05_ch5.vns:57": "<|emotion:anger|><|style:shouting|><|prosody:expressive_high|>",
+ "05_ch5.vns:62": "<|emotion:sadness|><|prosody:expressive_high|>",
+ "01_ch1.vns:112": "<|emotion:bitterness|>",
+ "03_ch3.vns:251": "<|emotion:helplessness|><|prosody:expressive_high|>",
+ "03_ch3.vns:223": "<|emotion:fear|><|prosody:speed_slow|>",
+ "02_ch2.vns:147": "<|emotion:anger|><|style:shouting|>",
+ "03_ch3.vns:197": "<|emotion:bitterness|><|prosody:speed_slow|>",
+ "04_ch4.vns:161": "<|emotion:fear|><|prosody:expressive_high|>",
+ "02_ch2.vns:242": "<|emotion:disgust|><|prosody:pitch_low|>",
+ "02_ch2.vns:72": "<|emotion:disgust|>",
+ "00_prologue.vns:62": "<|emotion:fear|><|style:shouting|><|prosody:expressive_high|>",
+ "06_ch6.vns:157": "<|emotion:pride|><|prosody:speed_slow|><|prosody:pitch_low|>"
+}

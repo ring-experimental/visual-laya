@@ -1,0 +1,45 @@
+{
+  "split": "random",
+  "test_rows": 304,
+  "full_data_training": true,
+  "base_zero_shot": {
+    "model": "laya-multilingual",
+    "n": 304,
+    "tier_accuracy": 0.362,
+    "impact_mae": 1.101,
+    "impact_within_one_level": 0.678,
+    "vengeance_mae": 0.469,
+    "nonsense_mae": 0.34,
+    "tier_confusion(gold->pred)": {
+      "high->high": 31,
+      "high->low": 21,
+      "high->mid": 47,
+      "low->high": 21,
+      "low->low": 37,
+      "low->mid": 64,
+      "mid->high": 19,
+      "mid->low": 22,
+      "mid->mid": 42
+    },
+    "ms_per_judgement": 18.9
+  },
+  "finetuned": {
+    "model": "laya-vn",
+    "n": 304,
+    "tier_accuracy": 0.957,
+    "impact_mae": 0.138,
+    "impact_within_one_level": 0.993,
+    "vengeance_mae": 0.033,
+    "nonsense_mae": 0.005,
+    "tier_confusion(gold->pred)": {
+      "high->high": 96,
+      "high->low": 1,
+      "high->mid": 2,
+      "low->low": 117,
+      "low->mid": 5,
+      "mid->low": 5,
+      "mid->mid": 78
+    },
+    "ms_per_judgement": 19.6
+  }
+}

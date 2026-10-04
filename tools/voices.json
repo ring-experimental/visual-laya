@@ -1,0 +1,93 @@
+{
+  "_comment": "VoiceDesign 보이스 정의. instruct = 목소리 설명(영어 권장), ref_text = 레퍼런스용 대사(그 인물다운 말투, 4~8초 분량). pick = gen_voices.py design 이 만든 후보 중 사용할 번호. 설명을 고치면 design 단계를 --force 로 다시 돌릴 것.",
+  "voices": {
+    "sion": {
+      "instruct": "Korean male, 17 years old. Cool, composed and quietly elegant voice with a slightly low, clear tenor. Speaks slowly and precisely with restrained emotion, a hint of coldness and hidden sadness underneath.",
+      "ref_text": "계획대로입니다. 걱정하지 마세요. 재는 다시 타지 않으니까요."
+    },
+    "haeon": {
+      "instruct": "Korean boy, 14 years old, before voice fully broke. Bright, cheerful and warm voice, lively and a little playful, natural and sincere.",
+      "ref_text": "미안, 미안. 늦었지? 대신 나도 선물 가져왔어. 진짜야, 눈 감아 봐."
+    },
+    "yuri": {
+      "instruct": "Korean girl, 17 years old. Soft, gentle and warm soprano voice, sweet and clear like a choir singer. Speaks tenderly in casual speech, sounds like she is smiling while holding back tears.",
+      "ref_text": "괜찮아, 괜찮아… 나 진짜 괜찮아. 그냥 바다가 보고 싶어서 왔어."
+    },
+    "dohyun": {
+      "instruct": "Korean boy, 17 years old, athletic swimmer and class president. Polite, steady and kind baritone-leaning voice, well-mannered and earnest, with a tense, guilty undertone.",
+      "ref_text": "미안해. 내가 더 잘했어야 했는데. 오늘은 그냥 먼저 들어가 볼게."
+    },
+    "eunchae": {
+      "instruct": "Korean girl, 17 years old, student council president. Cool, crisp and articulate alto-leaning voice. Calm, logical and icy, every word precise and controlled, intelligent and slightly aloof.",
+      "ref_text": "증거도 없이 추측만 하는 건 비효율적이야. 원하는 게 뭔지 정확히 말해."
+    },
+    "seungha": {
+      "instruct": "Korean boy, 17 years old, arrogant heir of a rich family. Languid, lazy and smug voice with a sneering, mocking tone, slightly husky mid-range, drawls his words as if bored.",
+      "ref_text": "야, 전학생. 여기선 내가 규칙이야. 재밌게 지내고 싶으면 눈치껏 굴어."
+    },
+    "haram": {
+      "instruct": "Korean girl, 16 years old. Blunt, curt and low-energy voice, slightly husky, short clipped sentences, guarded and stubborn with suppressed anger, rarely shows emotion.",
+      "ref_text": "불쌍하게 보지 마. 그런 눈 제일 싫어. 관찰이 먼저야, 선배."
+    },
+    "gyeonghan": {
+      "instruct": "Elderly Korean man in his late 70s, frail but dignified. Deep, slow, raspy and wise voice, warm yet stern, like an old chess master speaking to his grandson.",
+      "ref_text": "체스는 둘 줄 아느냐. 모르면 오늘 배우면 되겠구나. 서두를 것 없다."
+    },
+    "baek": {
+      "instruct": "Korean man in his late 50s, powerful corporate chairman. Deep, smooth, resonant bass voice, calm and smiling but menacing, condescending and utterly self-assured.",
+      "ref_text": "착하구나. 세상은 그렇게 단순하지 않단다. 생각은 내려가서 하자꾸나."
+    },
+    "jang": {
+      "instruct": "Korean man in his 40s, a cold henchman. Low, flat, emotionless voice, terse and quiet, slightly gravelly.",
+      "ref_text": "지시대로 처리했습니다. 흔적은 남기지 않았습니다."
+    },
+    "ma": {
+      "instruct": "Korean man in his 50s, former prosecutor turned politician. Firm, loud, authoritative public-speaking voice, polished and formal with a self-righteous tone.",
+      "ref_text": "저는 단 한 번도 부끄러운 선택을 한 적이 없습니다. 국민 여러분께 약속드립니다."
+    },
+    "butler": {
+      "instruct": "Korean man in his mid 50s, a loyal butler. Gentle, low, soft-spoken and very polite voice, calm and measured, quietly worried and caring.",
+      "ref_text": "도련님, 십 분 뒤 도착합니다. 부디 몸조심하십시오."
+    },
+    "mom": {
+      "instruct": "Korean woman in her late 40s living in a nursing home. Soft, slightly frail and dreamy voice, warm and motherly, a little absent-minded, gentle Korean casual speech.",
+      "ref_text": "아이고, 학생이네. 누구 보러 왔어? 우리 아들도 너만 했는데."
+    },
+    "teacher_f": {
+      "instruct": "Korean woman in her 40s, a science teacher, panicked and desperate, shouting through a locked door, voice trembling with fear.",
+      "ref_text": "거기 누구 있어요? 문이 안 열려요! 제발 도와주세요!"
+    },
+    "teacher_m": {
+      "instruct": "Korean man in his 40s, a homeroom teacher. Plain, slightly tired and matter-of-fact voice.",
+      "ref_text": "자, 조용히. 오늘부터 같이 지낼 전학생이다. 다들 잘 지내도록."
+    },
+    "detective": {
+      "instruct": "Korean man in his 40s, a gruff police detective. Rough, low, intimidating voice, blunt and suspicious.",
+      "ref_text": "현장에서 네 라이터가 나왔다. 거짓말할 생각은 하지 마라."
+    },
+    "judge": {
+      "instruct": "Korean man in his 60s, a judge in court. Grave, steady, formal and authoritative voice, slow and impartial.",
+      "ref_text": "증인은 사실대로 진술하십시오. 피고인은 조용히 하세요."
+    },
+    "anchor_f": {
+      "instruct": "Korean woman in her 30s, a TV news anchor. Clear, crisp, neutral and professional broadcast voice with even pacing.",
+      "ref_text": "다음 소식입니다. 해경은 오늘 오후 수색을 종료했다고 밝혔습니다."
+    },
+    "reporter_m": {
+      "instruct": "Korean man in his 30s, a pushy reporter. Fast, eager and probing voice, slightly loud.",
+      "ref_text": "한 말씀만 해 주시죠! 지금 심경이 어떠십니까?"
+    },
+    "student_m": {
+      "instruct": "Korean high school boy, 17 years old, a sneering bully sidekick. Snickering, mocking and casual voice.",
+      "ref_text": "야, 쟤 봐라. 전학생이라고 폼 잡는 거 웃기지 않냐?"
+    },
+    "student_f": {
+      "instruct": "Korean high school girl, 17 years old, gossiping. Light, quick, chatty voice with a whispering tone.",
+      "ref_text": "야, 들었어? 그 전학생 말이야, 엄청 부자래."
+    },
+    "extra_m": {
+      "instruct": "Korean man in his 30s, ordinary bystander. Natural, plain conversational voice.",
+      "ref_text": "저기요, 잠깐만요. 여기서 이러시면 안 됩니다."
+    }
+  }
+}
