@@ -17,6 +17,12 @@ switch ($cmd) {
     & $py -m pip install torch --index-url https://download.pytorch.org/whl/cu130
     & $py -m pip install "laya[serve]" datasets
     & $py -c "from huggingface_hub import snapshot_download; snapshot_download('convaiinnovations/laya-multilingual', local_dir='models/laya-multilingual')"
+    # 파인튜닝 판정 모델(private): 'hf auth login' 필요. 실패하면 .\run.ps1 train 으로 직접 만든다
+    $vnRepo = if ($env:LAYA_VN_REPO) { $env:LAYA_VN_REPO } else { "ringwring/laya-vn" }
+    & $py -c "from huggingface_hub import snapshot_download; snapshot_download('$vnRepo', local_dir='models/laya-vn')"
+    if ($LASTEXITCODE -ne 0) {
+      Write-Warning "$vnRepo 다운로드 실패 — '.\.venv\Scripts\hf.exe auth login' 후 다시 setup 하거나 '.\run.ps1 train'으로 생성하세요"
+    }
   }
   "train" { & $py training\train.py --full @args }
   "voice-setup" {

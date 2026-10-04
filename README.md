@@ -10,8 +10,8 @@
 ## 빠른 시작 (Windows)
 
 ```powershell
-.\run.ps1 setup    # 최초 1회: venv, PyTorch(CUDA 13), laya, 베이스 모델(laya-multilingual) 다운로드
-.\run.ps1 train    # 판정 모델 파인튜닝 → models\laya-vn  (RTX 5080 기준 수 분)
+.\run.ps1 setup    # 최초 1회: venv, PyTorch(CUDA 13), laya, 베이스 모델(laya-multilingual) + 판정 모델(laya-vn) 다운로드
+.\run.ps1 train    # (선택) 판정 모델 재학습 → models\laya-vn  (RTX 5080 기준 수 분)
 .\run.ps1          # 게임 서버 실행 → http://127.0.0.1:8765
 ```
 
@@ -70,6 +70,8 @@ logs/judgments.jsonl     실제 플레이 판정 로그 (추가 학습 데이터
 | 판정 1회 지연 (RTX 5080) | ~16ms | ~16ms |
 
 배포 모델(`models/laya-vn`)은 a+b 전체로 다시 학습한 것이다(RTX 5080에서 6 에폭 약 8분).
+Hugging Face `ringwring/laya-vn`(private)에 올려 두었고 `setup`이 내려받는다. 받기 전에 `.\.venv\Scripts\hf.exe auth login`,
+다른 저장소를 쓰려면 환경변수 `LAYA_VN_REPO`.
 
 판정 기준(장면·상대의 need)은 대본의 `[event]` 블록에 있으므로, **대본을 고치면 판정도 함께 바뀐다**.
 새 이벤트를 추가하면 `training/data/<ID>.jsonl`을 60줄 정도 쓰고 `.\run.ps1 train`.
