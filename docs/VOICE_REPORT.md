@@ -116,24 +116,28 @@ lines   WSL Higgs TTS 3: 레퍼런스 클론 + 감정 토큰 → game/assets/voi
 | `tools/check_voices.py` | Whisper로 생성 결과 발음 점검 |
 | `tools/tts_bench/` | 비교 실험 스크립트와 대사 12줄 설정 (실행하려면 각 모델을 다시 설치해야 함) |
 | `video/voice_compare/assets/voice/` | 2026-10-03 재생성한 비교 샘플 A·C·D(12줄, C는 2테이크)와 레퍼런스. `prep_refs.py`가 게임 음성 없이 Base 클론으로 A를 다시 만든다 |
+| `video/voice_compare/` | 비교 영상(HyperFrames) 소스. GSAP은 npm 의존성이므로 처음 한 번 `npm install` 후 `npm run render` (결과 `renders/`는 저장소 제외) |
 
 **음성 파일만 다시 넣는 경우:** `game/assets/voice/<보이스id>/<해시>.mp3` 경로에 파일을 두고 서버를 재시작하면(서버 없이 쓸 때는 `.\.venv\Scripts\python.exe server\compile_story.py`) 자동으로 연결된다.
 경로는 `server/voice_map.py`의 `voice_rel()`이 정한다. 다른 TTS 엔진을 쓰려면 `tools/gen_voices.py`의 `gen_lines()`만 바꾸면 된다.
 
 **Higgs로 다시 생성하는 경우:** `.\run.ps1 voice-setup`(Qwen VoiceDesign + WSL Higgs 설치, 약 20GB 다운로드) 후 `.\run.ps1 voice`.
-목소리 후보(`tools/voice_refs/`)는 지웠으므로 design 단계부터 새로 만든다. 같은 설명이어도 결과는 이전과 달라질 수 있다.
+목소리 후보(`tools/voice_refs/`)는 저장소에 없으므로(로컬 사본은 아래 8절) 새 환경에서는 design 단계부터 새로 만든다. 같은 설명이어도 결과는 이전과 달라질 수 있다.
 
 ## 8. 제거한 것
 
-- 음성 파일: `game/assets/voice/` 622개, `tools/voice_refs/`(후보와 클론 레퍼런스), `samples/tts_compare/`(비교 샘플), `tools/voice_manifest.json`, 생성·점검 로그
+- 음성 파일: `game/assets/voice/` 622개, `tools/voice_manifest.json`, 생성·점검 로그
 - 모델·환경:
   - WSL `~/tts`(Higgs TTS 3 모델 8.7GB, vLLM-Omni 환경 8.5GB), Higgs 레퍼런스 인코더 캐시, uv
-  - 이전 단계에서 Fish S2 Pro, ZONOS2, Qwen3 Base, CUDA 툴킷 12.8, emotion2vec·WavLM 캐시도 제거
+  - 이전 단계에서 Fish S2 Pro, ZONOS2, CUDA 툴킷 12.8, emotion2vec·WavLM 캐시도 제거
 - 남아 있는 관련 설치물(필요 없으면 직접 제거 가능):
-  - Windows `.venv-tts` + `models/Qwen3-TTS-12Hz-1.7B-VoiceDesign`(4.3GB)
+  - Windows `.venv-tts` + `models/Qwen3-TTS-12Hz-1.7B-VoiceDesign`(4.3GB) + `models/Qwen3-TTS-12Hz-1.7B-Base`(4.3GB, 비교 샘플 재생성 때 다시 받음)
+  - 2026-10-03 `tools/tts_bench/prep_refs.py`로 재생성한 `tools/voice_refs/`(목소리 후보 21개)와 `samples/tts_compare/`(비교 샘플·레퍼런스·`cer.json`)
   - Whisper large-v3-turbo HF 캐시(1.6GB)
   - `C:\Users\enne1\.wslconfig`(WSL 메모리 22GB)
   - WSL 시스템 패키지 ffmpeg / build-essential / git / python3-dev
+- 형상관리: 위 로컬 산출물(`tools/voice_refs/`, `samples/`, `models/`, `logs/`, `video/voice_compare/renders/`)은 모두 `.gitignore`로 저장소에서 제외한다.
+  저장소에 있는 음성은 `video/voice_compare/assets/`의 비교 샘플뿐이다(Git LFS).
 
 ## 참고 자료
 
