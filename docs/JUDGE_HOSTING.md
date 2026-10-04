@@ -12,7 +12,7 @@ GitHub Pages에 올린 게임(https://ring-experimental.github.io/visual-laya/)�
 | `server/app.py` | `--api-only`(정적 파일·파일 쓰기 없이 `/api`만), `CORS_ORIGINS`, `LAYA_LOG=0` |
 | `game/engine.js` | 판정 API 위치: `?api=<url>` > GitHub Pages면 `REMOTE_API` > 같은 서버. 원격이면 타임아웃 20초, 잠든 서버를 깨우려고 health를 10초 간격 12회 재시도. `REMOTE_API`는 비어 있음 |
 | `space/`, `tools/deploy_space.py` | HF Docker Space용 Dockerfile·README·배포 스크립트 (아래 2절, 미배포) |
-| `deploy/oci/` | OCI VM 배포 스크립트·systemd 유닛·Caddy 경로 (아래 3절, 서비스는 꺼 둠) |
+| `deploy/oci/` | OCI VM 배포 스크립트·systemd 유닛·Caddy 경로 (아래 3절). VM에는 `/opt/visual-laya`만 남고 서비스·경로는 제거됨 |
 
 ## 2. Hugging Face Space — 무료 불가
 
@@ -26,7 +26,17 @@ GitHub Pages에 올린 게임(https://ring-experimental.github.io/visual-laya/)�
 기존 매치 서버 VM(`ofa-match-a1`, Ampere A1 Neoverse-N1 2 OCPU / 12GB, Caddy가 `168.107.48.33.sslip.io` TLS 담당)에 경로만 추가했다.
 
 - **Caddy**: one-finger-act `provision.sh`가 Caddyfile을 매번 덮어쓰므로, 사이트 블록이 `/etc/caddy/sites.d/*.caddy`를 import하고
-  나머지는 `handle`로 매치 서버에 넘기도록 바꿨다(one-finger-act `work/caddy-sites-d` 브랜치). VM의 Caddyfile도 이 형태로 전환해 두었다.
+  나머지는 `handle`로 매치 서버에 넘기는 형태로 바꿔 썼다. 보류하면서 provision.sh 변경은 버리고 VM의 Caddyfile도 원래대로 되돌렸다.
+  다시 쓰려면 provision.sh의 Caddyfile을 아래 형태로 바꾸고 VM에도 반영해야 한다(`install.sh`가 이 import를 확인한다).
+
+  ```
+  <HOST> {
+  	import /etc/caddy/sites.d/*.caddy
+  	handle {
+  		reverse_proxy 127.0.0.1:8080
+  	}
+  }
+  ```
 - **배포**: `deploy/oci/deploy.sh` → VM에서 `install.sh`(멱등): `laya` 사용자, `/opt/visual-laya`(venv + CPU torch + 모델),
   `visual-laya-judge.service`(127.0.0.1:8790), `/etc/caddy/sites.d/visual-laya.caddy`(`/laya/*`). 약 2분.
 - **매치 서버 보호**: 실시간 매치 서버가 첫 코어를 쓰므로 판정은 두 번째 코어에만(`AllowedCPUs=1`, `CPUQuota=80%`, `Nice=15`,
@@ -56,6 +66,8 @@ laya는 CPU에서 이미 fp32로 돈다(`LAYA_CPU_AMP`를 켜야 bf16). N1에는
 - 브라우저 안 추론(onnxruntime-web): 서버가 필요 없지만 모델 다운로드 150MB 이상 + 전처리 JS 이식이 필요하다.
 
 ### 다시 켜기 / 완전히 지우기
+
+위 Caddyfile 형태를 먼저 적용한 뒤:
 
 ```bash
 deploy/oci/deploy.sh                       # 재설치 + 서비스 시작 + /laya/* 경로 등록
