@@ -76,6 +76,12 @@ Hugging Face `ringwring/laya-vn`(private)에 올려 두었고 `setup`이 내려�
 판정 기준(장면·상대의 need)은 대본의 `[event]` 블록에 있으므로, **대본을 고치면 판정도 함께 바뀐다**.
 새 이벤트를 추가하면 `training/data/<ID>.jsonl`을 60줄 정도 쓰고 `.\run.ps1 train`.
 
+## 웹 배포
+
+`game/`은 main에 push하면 GitHub Pages(https://ring-experimental.github.io/visual-laya/)로 배포된다(`.github/workflows/pages.yml`).
+Pages에서는 판정 서버 없이 브라우저 간이 판정으로 진행한다. 원격 판정 서버(HF Space, OCI) 검토 과정과 측정은 **`docs/JUDGE_HOSTING.md`**.
+다른 곳에 띄운 판정 서버를 쓰려면 `?api=<서버 URL>`을 붙여 연다(서버에 `CORS_ORIGINS` 필요).
+
 ## 조작
 
 클릭/Space/Enter 진행 · `H` 호감도 · `L`/휠업 로그 · `A` 자동 · `S` 스킵 · `Esc` 메뉴 · 입력창 `Ctrl+Enter` 전송

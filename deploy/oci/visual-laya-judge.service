@@ -1,0 +1,33 @@
+# visual-laya 판정 API (laya-vn, CPU). deploy/oci/install.sh가 설치한다.
+# 같은 VM의 ofa-match(실시간 매치 서버)를 방해하지 않도록 두 번째 코어 하나에 낮은 우선순위로 묶는다.
+[Unit]
+Description=visual-laya judge API (laya-vn)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=laya
+Group=laya
+WorkingDirectory=/opt/visual-laya/app
+Environment=LAYA_VN_MODEL=/opt/visual-laya/models/laya-vn
+Environment=LAYA_LOG=0
+Environment=CORS_ORIGINS=https://ring-experimental.github.io
+Environment=OMP_NUM_THREADS=1
+Environment=HF_HOME=/opt/visual-laya/hf
+ExecStart=/opt/visual-laya/venv/bin/python server/app.py --api-only --host 127.0.0.1 --port 8790 --device cpu
+Restart=always
+RestartSec=3
+
+AllowedCPUs=1
+CPUQuota=80%
+Nice=15
+MemoryMax=3G
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/visual-laya/hf
+
+[Install]
+WantedBy=multi-user.target

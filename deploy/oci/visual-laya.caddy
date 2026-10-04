@@ -1,0 +1,4 @@
+# /etc/caddy/sites.d/visual-laya.caddy — ofa-match 사이트 블록 안에서 import된다
+handle_path /laya/* {
+	reverse_proxy 127.0.0.1:8790
+}
