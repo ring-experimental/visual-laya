@@ -12,7 +12,7 @@ GitHub Pages에 올린 게임(https://ring-experimental.github.io/visual-laya/)�
 | `server/app.py` | `--api-only`(정적 파일·파일 쓰기 없이 `/api`만), `CORS_ORIGINS`, `LAYA_LOG=0` |
 | `game/engine.js` | 판정 API 위치: `?api=<url>` > GitHub Pages면 `REMOTE_API` > 같은 서버. 원격이면 타임아웃 20초, 잠든 서버를 깨우려고 health를 10초 간격 12회 재시도. `REMOTE_API`는 비어 있음 |
 | `space/`, `tools/deploy_space.py` | HF Docker Space용 Dockerfile·README·배포 스크립트 (아래 2절, 미배포) |
-| `deploy/oci/` | OCI VM 배포 스크립트·systemd 유닛·Caddy 경로 (아래 3절). VM에는 `/opt/visual-laya`만 남고 서비스·경로는 제거됨 |
+| `deploy/oci/` | OCI VM 배포 스크립트·systemd 유닛·Caddy 경로 (아래 3절). VM에서는 모두 제거됨 |
 
 ## 2. Hugging Face Space — 무료 불가
 
@@ -74,8 +74,10 @@ deploy/oci/deploy.sh                       # 재설치 + 서비스 시작 + /lay
 ```
 
 그다음 `engine.js`의 `REMOTE_API`를 `"https://168.107.48.33.sslip.io/laya/"`로 채운다(타임아웃 20초 안에 들어와야 하므로 지금 속도로는 권장하지 않음).
-완전히 지우려면 VM에서:
+
+2026-10-04에 VM에서 모두 제거했다: 서비스·유닛, `sites.d` 경로, `/opt/visual-laya`(venv·모델), `laya` 사용자. apt로 설치한 `python3-venv`만 남아 있다.
+다시 설치한 뒤 지울 때:
 
 ```bash
-sudo systemctl disable --now visual-laya-judge; sudo rm -f /etc/systemd/system/visual-laya-judge.service /etc/caddy/sites.d/visual-laya.caddy; sudo rm -rf /opt/visual-laya; sudo userdel laya; sudo systemctl reload caddy
+sudo systemctl disable --now visual-laya-judge; sudo rm -f /etc/systemd/system/visual-laya-judge.service /etc/caddy/sites.d/visual-laya.caddy; sudo rm -rf /opt/visual-laya; sudo userdel laya; sudo systemctl daemon-reload; sudo systemctl reload caddy
 ```
